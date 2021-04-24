@@ -7,13 +7,13 @@ class Array
 {
 public:
 private:
-	static const size_t minsize = 10; // мінімальний розмір масиву
-	size_t Size; // виділено пам’яті для елементів
-	size_t Count; // кількість елементів в масиві
-	size_t First; // значення індексу першого елемента в масиві
-	double* elems; // вказівник на дані
+	static const size_t minsize = 10; // min size
+	size_t Size; // memory for array
+	size_t Count; // number of elements
+	size_t First; // the value of the index of the first element in the array
+	double* elems; // array
 public:
-	// конструктори копіювання та деструктор
+	// constructors and destructors
 	Array(const size_t& n = minsize)	throw(bad_alloc, invalid_argument);
 	Array(const Array&) throw(bad_alloc);
 	Array(const double* first, const double* last) throw(bad_alloc, invalid_argument);
@@ -21,20 +21,20 @@ public:
 	~Array();
 	Array& operator=(const Array&);
 
-	// ітератори
+	// iterators
 	double* begin() { return elems; }
 	const double* begin() const { return elems; }
 	double* end() { return elems + Count; }
 	const double* end() const { return elems + Count; }
 
-	// розміри
-	size_t size() const; // поточний розмір
-	bool empty() const; // якщо є елементи
-	size_t capacity() const; // потенційний розмір
-	void resize(size_t newsize) // змінити розмір
+	// sizes
+	size_t size() const; // curent size
+	bool empty() const; // (isEmpty)
+	size_t capacity() const; // size
+	void resize(size_t newsize) // change size
 		throw(bad_alloc);
 
-	// доступ до елементів
+	// access to elements
 	double& operator[](size_t) throw(out_of_range);
 	const double& operator[](size_t) const throw(out_of_range);
 	double& front() { return elems[0]; }
@@ -42,17 +42,17 @@ public:
 	double& back() { return elems[size() - 1]; }
 	const double& back() const { return elems[size() - 1]; }
 
-	// методи-модифікатори
-	void push_back(const double& v); // добавити елемент в кінець
-	void pop_back(); // видалити останній елемент – реалізувати самостійно
-	void clear() { Count = 0; } // очистити масив
-	void swap(Array& other); // поміняти з іншим масивом
+	// other methods
+	void push_back(const double& v); // add element from the back
+	void pop_back(); // delete the last element
+	void clear() { Count = 0; } // clear the array
+	void swap(Array& other); // swap with other
 
-	// дружні функції вводу/виводу
+	// friendly functions
 	friend ostream& operator <<(ostream& out, const Array& a);
 	friend istream& operator >>(istream& in, Array& a);
 
-	//завдання
+	//task
 	void generalTask() throw(bad_alloc);
 	double Sum() const;
 	double arithmeticMeanAbs() const;

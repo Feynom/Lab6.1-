@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿
+#include <iostream>
 #include "Array.h"
 
 Array returnDynamicArray(int arr[], const int size);
@@ -10,7 +11,7 @@ int main()
     int arr[size];
 
     for(int i = 0; i < size; i++)
-        arr[i] =-50 + rand() % int(50 - (-50) + 1);  //заповнив масив рандомними числами від -50 до 50
+        arr[i] =-50 + rand() % int(50 - (-50) + 1);  //filled the array( -50 до 50)
 
     Array taskArray = returnDynamicArray(arr, size);
     taskArray.Print();

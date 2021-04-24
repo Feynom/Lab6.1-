@@ -154,8 +154,8 @@ double Array::arithmeticMeanAbs() const
 }
 void Array::generalTask() throw(bad_alloc)
 {
-	push_back(Sum());//додаємо суму в кінець масиву
-	push_back(arithmeticMeanAbs());//додаємо середнє арифметичне в кінець масиву
+	push_back(Sum());//add sum to the back
+	push_back(arithmeticMeanAbs());//add arithmeticMeanAbs to the back
 }
 double Array::firstNegativeNumber() const
 {
