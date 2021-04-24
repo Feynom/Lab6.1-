@@ -59,9 +59,9 @@ Array::~Array()
 }
 void Array::push_back(const double& v)
 {
-	if (Count == Size) // м≥сц€ нема
-		resize(Size * 2); // зб≥льшили "м≥стк≥сть"
-	elems[Count++] = v; // присвоњли
+	if (Count == Size) // no space
+		resize(Size * 2); // increase capacity
+	elems[Count++] = v; 
 }
 double& Array::operator [](size_t index) throw(out_of_range)
 {
@@ -92,7 +92,7 @@ void Array::resize(size_t newsize) throw(bad_alloc)
 }
 void Array::swap(Array& other)
 {
-	std::swap(elems, other.elems); // стандартна функц≥€ обм≥ну
+	std::swap(elems, other.elems); // standart func of exchange
 	std::swap(Size, other.Size);
 }
 size_t Array::capacity() const
@@ -116,7 +116,11 @@ ostream& operator <<(ostream& out, const Array& tmp)
 }
 istream& operator >>(istream& in, const Array& tmp)
 {
-	// тут маЇ бути введенн€ елемент≥в масиву!
+	for (int i = 0; i < tmp.size(); i++)
+	{
+		cout << "arr[" << i << "] = "; 
+		in >> tmp[i];
+	}
 	return in;
 }
 void Array::pop_back() throw(bad_alloc)
